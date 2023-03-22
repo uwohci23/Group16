@@ -29,8 +29,8 @@ define(function(require, exports, module) {
     this.disastersEnabled = false;
   });
 
-
-  var DisChance = [479, 239, 59];
+  // corresponds to game levels, 0 = easy, 1 = med, 2 = hard, 3 = tutorial (for now tutorial has same values as easy)
+  var DisChance = [479, 239, 59, 479];
 
   DisasterManager.prototype.doDisasters = function(census) {
     if (this._floodCount)

@@ -46,7 +46,7 @@
           <div class="floatLeft">
             <h2 class="mintcream alignCenter">New Game</h2>
             <div id="newGameContainer" class="alignCenter"></div>
-            <form id="playForm">
+            
               <label for="nameForm">City Name: </label>
               <input id="nameForm" autofocus required class="margin10" type="text" maxlength="15">
               <br>
@@ -55,13 +55,15 @@
               <input type="radio" class="difficulty" name="difficulty" id="difficultyMed" value="1"><label for="difficultyMed"> Medium</label>
               <input type="radio" class="difficulty" name="difficulty" id="difficultyHard" value="2"><label for="difficultyHard"> Hard</label>
               <br>
-              <label for="difficultForm">Tutorial:</label>
-              <input type="checkbox" id="tutorial" name="tutorial">
               <div id="splashButtonContainer">
                 <button id="generateButton" type="button" class="splashGenerate buttomSmall">Regenerate</button>
-                <button id="playit" class="buttomSmall" type="submit">Play!</button>
+                <form id="tutorialForm">
+                  <button id="tutorialplayit" class="buttomSmall" type="submit">Play Tutorial!</button>
+                </form>
+                <form id="playForm">
+                  <button id="playit" class="buttomSmall" type="submit">Play!</button> 
+                </form>
               </div>
-            </form>
           </div>
 
           <div class="floatRight">
@@ -488,6 +490,6 @@
       });
     </script>
     <script defer src="thirdparty/jquery/jquery-2.1.1.min.js"></script>
-    <script defer data-main="dist/bundle.js" src="thirdparty/requirejs/require.js"></script>
+    <script defer data-main="js/Main.js" src="thirdparty/requirejs/require.js"></script>
   </body>
 </html>

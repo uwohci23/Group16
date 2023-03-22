@@ -13,6 +13,7 @@ define(function(require, exports, module) {
 
   var MiscUtils = require('./MiscUtils');
 
+
   // A very thin wrapper around localStorage, in case we wish to move to some other storage mechanism
   // (such as indexedDB) in the future
 

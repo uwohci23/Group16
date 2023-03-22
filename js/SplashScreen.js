@@ -54,21 +54,23 @@ define(function(require, exports, module) {
 
     // Set up listeners on buttons. When play is clicked, we will move on to get the player's desired
     // difficulty level and city name before launching the game properly
-    $('#splashGenerate').click(regenerateMap.bind(this));
-    $('#splashPlay').click(acquireNameAndDifficulty.bind(this));
-    $('#splashLoad').click(handleLoad.bind(this));
+    $('#generateButton').click(regenerateMap.bind(this));
+    $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
+    $('#loadButton').click(handleLoad.bind(this));
 
     // Conditionally enable load/save buttons
     $('#saveRequest').prop('disabled', !Storage.canStore);
-    $('#splashLoad').prop('disabled', !(Storage.canStore && Storage.getSavedGame() !== null));
+    $('#loadButton').prop('disabled', !(Storage.canStore && Storage.getSavedGame() !== null));
 
     // Paint the minimap
-    this.splashCanvas = new SplashCanvas('splashContainer', tileSet);
+    this.splashCanvas = new SplashCanvas('splashMap', tileSet, "splash1");
+    this.splashCanvas2 = new SplashCanvas('splashMap2', tileSet, "splash2");
+    
     this.splashCanvas.paint(this.map);
 
     // Let's get some bits on screen!
     $('.awaitGeneration').toggle();
-    $('#splashPlay').focus();
+    $('#newGameButton').focus();
   }
 
 
@@ -77,7 +79,7 @@ define(function(require, exports, module) {
     e.preventDefault();
 
     this.map = MapGenerator();
-    this.splashCanvas.paint(this.map);
+    this.splashCanvas2.paint(this.map);
   };
 
 
@@ -91,9 +93,9 @@ define(function(require, exports, module) {
       return;
 
     // Remove installed event listeners
-    $('#splashLoad').off('click');
-    $('#splashGenerate').off('click');
-    $('#splashPlay').off('click');
+    $('#loadButton').off('click');
+    $('#generateButton').off('click');
+    $('#newGameButton').off('click');
 
     // Hide the splashscreen UI
     $('#splash').toggle();
@@ -109,9 +111,8 @@ define(function(require, exports, module) {
     e.preventDefault();
 
     // Remove the initial event listeners
-    $('#splashLoad').off('click');
-    $('#splashGenerate').off('click');
-    $('#splashPlay').off('click');
+    $('#loadButton').off('click');
+    $('#newGameButton').off('click');
 
     // Get rid of the initial splash screen
     $('#splash').toggle();
@@ -126,6 +127,8 @@ define(function(require, exports, module) {
     // Display the name and difficulty form
     $('#start').toggle();
     $('#nameForm').focus();
+
+    this.splashCanvas2.paint(this.map);
   };
 
 

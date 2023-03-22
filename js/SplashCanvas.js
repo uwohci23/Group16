@@ -31,7 +31,7 @@ define(function(require, exports, module) {
   // or if the given parent node is absent, or if the tileset isn't valid. This function does not paint the canvas: you
   // must explicitly call paint with a map.
   function SplashCanvas(parentID, tileSet, id) {
-    id = id || SplashCanvas.DEFAULT_ID;
+    id = id;
 
     if (!(this instanceof SplashCanvas))
       return new SplashCanvas(parentNode, tileSet, id);
@@ -96,8 +96,8 @@ define(function(require, exports, module) {
   };
 
 
-  SplashCanvas.DEFAULT_WIDTH = 360;
-  SplashCanvas.DEFAULT_HEIGHT = 300;
+  SplashCanvas.DEFAULT_WIDTH = 305;
+  SplashCanvas.DEFAULT_HEIGHT = 305;
   SplashCanvas.DEFAULT_ID = 'SplashCanvas';
 
 

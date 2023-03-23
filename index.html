@@ -35,7 +35,7 @@
           <div id="splashMap" class="alignCenter"></div>
           <div id="splashButtonContainer">
             <form id="tutorialForm">
-              <button id="tutorialplayit" class="alignCenter splashButton shadow_subtle" type="submit">Play Tutorial!</button>
+              <button id="tutorialplayit" class="alignCenter splashButton shadow_subtle" type="submit">Play Tutorial</button>
             </form>
             <button id="newGameButton" class="alignCenter splashPlay splashButton shadow_subtle" >New Game</button>
             <button id="loadButton" class="alignCenter splashLoad splashButton shadow_subtle" disabled>Load game</button>
@@ -254,13 +254,17 @@
               <dt class="evalItem statisticsItem">Game Level:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalLevel"></dd>
               <dt class="evalItem statisticsItem">Score:</dt><dd class="elided statisticsRight evalItem evalRight" id="evalScore"></dd>
               <dt class="evalItem statisticsItem">Annual change:</dt><dd class=" elided statisticsRight evalItem evalRight" id="evalScoreDelta"></dd>
-	    </dl>
-	  </section>
+	          </dl>
+	        </section>
           <form id="evalButtons" class="alignCenter margin10">
             <input type="submit" id="evalOK" class="width140 dialogOK" value="OK">
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Disaster Screen
+      --->
       <div class="hidden modal shadow" id="disasterWindow">
         <header id="disasterHeader" class="disasterHeader padding10 chunk alignCenter">
            Disasters
@@ -286,6 +290,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Query Screen
+      --->
       <div class="hidden modal shadow" id="queryWindow">
         <header id="queryHeader" class="queryHeader padding10 chunk alignCenter">
            Query
@@ -332,14 +340,14 @@
                 </tr>
               </thead>
               <tbody>
-	        <tr>
+	              <tr>
                   <td id="queryTileBurnable"></td>
                   <td id="queryTileBulldozable"></td>
                   <td id="queryTileCond"></td>
                   <td id="queryTileAnim"></td>
                   <td id="queryTilePowered"></td>
-		  <td id="queryTileZone"></td>
-	        </tr>
+                  <td id="queryTileZone"></td>
+	              </tr>
               </tbody>
             </table>
           </div>
@@ -348,6 +356,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Congratulations Screen
+      --->
       <div class="hidden modal shadow" id="congratsWindow">
         <header id="congratsHeader" class="congratsHeader padding10 chunk alignCenter">
            Congratulations!
@@ -359,19 +371,10 @@
           </form>
         </div>
       </div>
-      <div class="hidden modal shadow" id="nagWindow">
-        <header id="nagHeader" class="nagHeader padding10 chunk white alignCenter">
-           micropolisJS
-        </header>
-        <div id="nagContainer" class="padding10 open">
-          <div id="nagMessage" class="alignCenter">
--            Whoa! You've been playing this thing for half an hour?!? Please consider <a class="nag" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GPU2AKWAYSNAL" target="_blank">supporting me</a> so I can make micropolisJS even better!
-          </div>
-          <form id="nagForm" class="alignCenter margin10">
-            <input type="submit" id="nagOK" class="dialogOK" value="OK">
-          </form>
-        </div>
-      </div>
+
+      <!-- 
+      ----  Save Screen
+      --->
       <div class="hidden modal shadow" id="saveWindow">
         <header id="saveHeader" class="saveHeader padding10 chunk alignCenter">
           Save
@@ -383,6 +386,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Screenshot Link Screen
+      --->
       <div class="hidden modal shadow" id="screenshotLinkWindow">
         <header id="screenshotLinkHeader" class="screenshotHeader padding10 chunk alignCenter">
            Take Picture
@@ -396,6 +403,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Screenshot Screen
+      --->
       <div class="hidden modal shadow" id="screenshotWindow">
         <header id="screenshotHeader" class="screenshotHeader white padding10 chunk alignCenter">
            Take Picture
@@ -412,6 +423,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Settings Screen
+      --->
       <div class="hidden modal shadow" id="settingsWindow">
         <header id="settingsHeader" class="settingsHeader white padding10 chunk alignCenter">
            Settings
@@ -446,6 +461,10 @@
           </form>
         </div>
       </div>
+
+      <!-- 
+      ----  Debug Screen
+      --->
       <div class="hidden modal shadow" id="debugWindow">
         <header id="debugHeader" class="debugHeader white padding10 chunk alignCenter">
            Debug
@@ -462,6 +481,10 @@
           </form>
         </div>
       </div>
+      
+      <!-- 
+      ----  Touchscreen Screen
+      --->
       <div class="hidden modal shadow" id="touchWarnWindow">
         <header id="touchHeader" class="touchHeader white padding10 chunk alignCenter">
            Hello, touchscreen user!

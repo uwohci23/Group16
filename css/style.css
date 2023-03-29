@@ -54,6 +54,10 @@ header h1 {
   margin-left: 50px;
 }
 
+label {
+  text-align: left;
+}
+
 main {
   position: absolute;
   top: 0;
@@ -78,6 +82,10 @@ nav li {
 
 .alignCenter {
   text-align: center;
+}
+
+.alignLeft {
+  text-align: left;
 }
 
 .awaitGeneration, .hidden, .initialHidden, .imageData {

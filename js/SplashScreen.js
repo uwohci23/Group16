@@ -150,9 +150,8 @@ define(function(require, exports, module) {
     $('#start').toggle();
     $('#tutorialScreen').toggle();
 
-    
     // When the form is submitted, we'll be ready to launch the game
-    $('#tutorialPlayForm').submit(play.bind(this));
+    $('#tutorialForm').submit(play.bind(this));
   };
 
   // This function should be called after the name/difficulty form has been submitted. The game will now be launched

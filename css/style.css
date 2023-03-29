@@ -85,6 +85,7 @@ footer a, footer a:link, footer a:visited, footer a:hover {
 img{
   max-width: 400px;
   max-height: 300px;
+  border-radius:20px;
 }
 
 nav li {
@@ -245,6 +246,7 @@ nav li {
 
 .mintcream, .neutral {
   background-color: mintcream;
+  border-radius:20px;
 }
 
 .neutral {
@@ -441,6 +443,7 @@ nav li {
   padding: 5px;
   margin: 0 auto;
   border: 1px solid black;
+  border-radius:20px;
 }
 
 #flagsTable td, #flagsTable th {
@@ -484,6 +487,7 @@ nav li {
   bottom: 65px;
   left: 50%;
   border: 1px solid black;
+  border-radius:20px;
   width: 400px;
   height: 19px;
   transform: translateX(-50%);
@@ -522,6 +526,12 @@ nav li {
 }
 
 #splashButtonContainer{
+  margin:auto;
+  width:75%;
+  height:auto;
+}
+
+#tutorialForm{
   margin:auto;
   width:75%;
   height:auto;
@@ -916,6 +926,7 @@ nav li {
   position: relative;
   left: 50%;
   border: 1px solid black;
+  border-radius:20px;
   width: 75%;
   line-height: 1.7em;
   text-align: justify;
@@ -940,6 +951,7 @@ nav li {
 
 #appeal {
   border: 1px dotted grey;
+  border-radius:20px;
   font-size: 12px;
   width: 50%;
   margin: auto;

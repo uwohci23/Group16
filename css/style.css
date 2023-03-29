@@ -54,6 +54,16 @@ header h1 {
   margin-left: 50px;
 }
 
+h{
+  font-size:64px;
+  font-weight: bolder;
+  color:white;
+}
+
+label {
+  text-align: left;
+}
+
 main {
   position: absolute;
   top: 0;
@@ -72,12 +82,22 @@ footer a, footer a:link, footer a:visited, footer a:hover {
   margin-left: 5px;
 }
 
+img{
+  max-width: 400px;
+  max-height: 300px;
+  border-radius:20px;
+}
+
 nav li {
   display: inline;
 }
 
 .alignCenter {
   text-align: center;
+}
+
+.alignLeft {
+  text-align: left;
 }
 
 .awaitGeneration, .hidden, .initialHidden, .imageData {
@@ -108,9 +128,9 @@ nav li {
 .buttomSmall{
   background-color: green;
   color: white;
-  font-size: 18px;
-  height: 24px;
-  margin: 10px 2px 10px 2px;
+  font-size: 24px;
+  height: 32px;
+  margin: 10px 2px 5px 2px;
 }
 
 .cancel, #debugRequest, #pauseRequest {
@@ -122,17 +142,23 @@ nav li {
   position: absolute;
   top: 50%;
   left: 50%;
-  border: 1px solid black;
   width: 400px;
   transform: translate(-50%, -50%);
+}
+
+.centred_horizontal{
+  width:100%;
+  min-width: 80%;
+  max-width: 80%;
+  margin: auto;
+  margin-top:10%;
+  margin-bottom: 10px;
 }
 
 .chunk {
   font-family: 'Chunk', serif;
   font-weight: normal;
 }
-
-
 
 .dialogOK {
   color: white;
@@ -220,6 +246,7 @@ nav li {
 
 .mintcream, .neutral {
   background-color: mintcream;
+  border-radius:20px;
 }
 
 .neutral {
@@ -319,6 +346,15 @@ nav li {
   width: 150px;
 }
 
+.table{
+  display: table-row
+}
+
+.tiled{
+  margin:15px;
+  width:425px;  
+  display: inline-block;
+}
 
 .toolButton {
   width: 140px;
@@ -328,6 +364,12 @@ nav li {
   background-color: white;
   font-size: 12px;
   display: inline-block;
+}
+
+.tutorialPane{
+  width:100%;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .unselected {
@@ -401,6 +443,7 @@ nav li {
   padding: 5px;
   margin: 0 auto;
   border: 1px solid black;
+  border-radius:20px;
 }
 
 #flagsTable td, #flagsTable th {
@@ -444,6 +487,7 @@ nav li {
   bottom: 65px;
   left: 50%;
   border: 1px solid black;
+  border-radius:20px;
   width: 400px;
   height: 19px;
   transform: translateX(-50%);
@@ -487,6 +531,12 @@ nav li {
   height:auto;
 }
 
+#tutorialForm{
+  margin:auto;
+  width:75%;
+  height:auto;
+}
+
 #start {
   display: none;
   text-align: center;
@@ -519,6 +569,13 @@ nav li {
   width: 177px;
   height: 128px;
   margin: 0 auto;
+}
+
+#tutorialScreen{
+  display: none;
+  text-align: center;
+  font-size: 18px;
+  width:715px;
 }
 
 #wrapper {
@@ -869,6 +926,7 @@ nav li {
   position: relative;
   left: 50%;
   border: 1px solid black;
+  border-radius:20px;
   width: 75%;
   line-height: 1.7em;
   text-align: justify;
@@ -893,6 +951,7 @@ nav li {
 
 #appeal {
   border: 1px dotted grey;
+  border-radius:20px;
   font-size: 12px;
   width: 50%;
   margin: auto;

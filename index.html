@@ -45,8 +45,7 @@
         <div id="start" class="mintcream open shadow padding10 centred">
           <div class="floatLeft">
             <h2 class="mintcream alignCenter">New Game</h2>
-            <div id="newGameContainer" class="alignCenter"></div>
-            
+            <form id="playForm">
               <label for="nameForm">City Name: </label>
               <input id="nameForm" autofocus required class="margin10" type="text" maxlength="15">
               <br>
@@ -55,20 +54,46 @@
               <input type="radio" class="difficulty" name="difficulty" id="difficultyMed" value="1"><label for="difficultyMed"> Medium</label>
               <input type="radio" class="difficulty" name="difficulty" id="difficultyHard" value="2"><label for="difficultyHard"> Hard</label>
               <br>
+              <label for="checkboxForm">Tutorial:</label>
+              <input type="checkbox" id="tutorial" name="tutorial">
+
+              <br>
               <div id="splashButtonContainer">
                 <button id="generateButton" type="button" class="splashGenerate buttomSmall">Regenerate</button>
-                <form id="tutorialForm">
-                  <button id="tutorialplayit" class="buttomSmall" type="submit">Play Tutorial!</button>
-                </form>
-                <form id="playForm">
-                  <button id="playit" class="buttomSmall" type="submit">Play!</button> 
-                </form>
+                <button id="playit" class="buttomSmall" type="submit">Play!</button>
               </div>
+            </form>
           </div>
 
           <div class="floatRight">
             <div id="splashMap2" class="alignCenter"></div>
           </div>
+        </div>
+
+        <!-- 
+        ----  Tutorial Screen
+        ---> 
+        <div id="tutorialScreen" class="open tutorialPane">
+          <h>Tutorial</h>
+            <div class="open centred_horizontal">
+              <div id = "left_tut" class="mintcream open shadow padding10 tiled">
+                <img src="/images/tut_placement.gif" class="shadow" alt="Placement Tutorial">
+                To place down buildings, select the type you would like and click on the map!
+              </div>
+            
+              <div id = "middle_tut" class="mintcream open shadow padding10 tiled">
+                <img src="/images/tut_funding.gif" class="shadow" alt="Funding Tutorial">
+                To manage funding, click on the "Budget" tab and adjust accordingly!
+              </div>
+  
+              <div id = "right_tut" class="mintcream open shadow padding10 tiled">
+                This is an example of a tutorial deck.
+              </div>
+            </div> 
+
+            <form id="tutorialForm">
+              <button id="playittut" class="buttomSmall" type="submit">Play!</button>
+            </form>
         </div>
 
         <!-- 
@@ -490,6 +515,6 @@
       });
     </script>
     <script defer src="thirdparty/jquery/jquery-2.1.1.min.js"></script>
-    <script defer data-main="js/Main.js" src="thirdparty/requirejs/require.js"></script>
+    <script defer data-main="dist/bundle.js" src="thirdparty/requirejs/require.js"></script>
   </body>
 </html>

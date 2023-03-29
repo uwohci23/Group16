@@ -121,13 +121,16 @@ define(function(require, exports, module) {
     if (Config.debug)
       $('#nameForm').removeAttr('required');
 
+    $('#playForm').submit(tutorial.bind(this));
+    
     // When the form is submitted, we'll be ready to launch the game
-    $('#playForm').submit(play.bind(this));
-
-    // if tutorial, set the tutorial flag
-    $('#tutorialForm').submit((e) => {
-      play.call(this, e, true);
-    });
+    // $('#playForm').submit(function(e){
+    //   if($('#tutorial').checked){
+    //      tutorial(e);
+    //   }else{
+    //     play(e);
+    //   }
+    // }.bind(this));
 
     // Display the name and difficulty form
     $('#start').toggle();
@@ -136,19 +139,35 @@ define(function(require, exports, module) {
     this.splashCanvas2.paint(this.map);
   };
 
+  var tutorial = function(e){
+    e.preventDefault();
+
+    // Remove the initial event listeners
+    $('#playForm').off('submit');
+    $('#generateButton').off('click');
+    $('#playit').off('click');
+
+    $('#start').toggle();
+    $('#tutorialScreen').toggle();
+
+    
+    // When the form is submitted, we'll be ready to launch the game
+    $('#tutorialPlayForm').submit(play.bind(this));
+  };
 
   // This function should be called after the name/difficulty form has been submitted. The game will now be launched
   // with the map selected earlier.
-  var play = function(e, tutorial=false) {
+  var play = function(e) {
     e.preventDefault();
 
     // As usual, uninstall event listeners, and hide the UI
     $('#playForm').off('submit');
     $('#tutorialForm').off('submit');
-    $('#start').toggle();
+    $('#start').hide();
+    $('#tutorialScreen').hide();
 
     // What values did the player specify?
-    var difficulty = tutorial ? 3 : $('.difficulty:checked').val() - 0;
+    var difficulty = $('.difficulty:checked').val() - 0;
     var name = $('#nameForm').val();
 
     // Launch a new game

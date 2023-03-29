@@ -116,9 +116,9 @@ nav li {
 .buttomSmall{
   background-color: green;
   color: white;
-  font-size: 18px;
-  height: 24px;
-  margin: 10px 2px 10px 2px;
+  font-size: 24px;
+  height: 32px;
+  margin: 10px 2px 5px 2px;
 }
 
 .cancel, #debugRequest, #pauseRequest {

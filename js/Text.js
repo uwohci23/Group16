@@ -32,6 +32,7 @@ define(function(require, exports, module) {
 
   // Evaluation window
   var gameLevel = {};
+  gameLevel['' + Simulation.LEVEL_TUTORIAL] = 'Tutorial';
   gameLevel['' + Simulation.LEVEL_EASY] = 'Easy';
   gameLevel['' + Simulation.LEVEL_MED] = 'Medium';
   gameLevel['' + Simulation.LEVEL_HARD] = 'Hard';

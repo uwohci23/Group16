@@ -124,7 +124,8 @@ define(function(require, exports, module) {
 
   var dX = [1, 2, 1, 2];
   var dY = [-1, -1, 0, 0];
-  var meltdownTable = [30000, 20000, 10000];
+  // corresponds to game levels, 0 = easy, 1 = med, 2 = hard, 3 = tutorial (for now tutorial has same values as easy)
+  var meltdownTable = [30000, 20000, 10000, 30000];
 
   PowerManager.prototype.nuclearPowerFound = function(map, x, y, simData) {
     // TODO With the auto repair system, zone gets repaired before meltdown

@@ -33,7 +33,9 @@ define(function(require, exports, module) {
   var taxTable = [
     200, 150, 120, 100, 80, 50, 30, 0, -10, -40, -100,
     -150, -200, -250, -300, -350, -400, -450, -500, -550, -600];
-  var extMarketParamTable = [1.2, 1.1, 0.98];
+
+  // corresponds to game levels, 0 = easy, 1 = med, 2 = hard, 3 = tutorial (for now tutorial has same values as easy)
+  var extMarketParamTable = [1.2, 1.1, 0.98, 1.2];
 
   Valves.prototype.save = function(saveData) {
     saveData.resValve = this.resValve;
@@ -121,7 +123,12 @@ define(function(require, exports, module) {
     indRatio = Math.min(indRatio, indRatioMax);
 
     // Constrain growth according to the tax level.
-    var z = Math.min((budget.cityTax + gameLevel), taxMax);
+    // if tutorial, which has the value 3 and this appears to be using the actual number to compare for tax, don't add gameLevel (same as gameLevel=0=easy)
+    var z;
+    if (gameLevel == 3)
+      z = Math.min((budget.cityTax), taxMax);
+    else
+      z = Math.min((budget.cityTax + gameLevel), taxMax);
     resRatio = (resRatio - 1) * taxTableScale + taxTable[z];
     comRatio = (comRatio - 1) * taxTableScale + taxTable[z];
     indRatio = (indRatio - 1) * taxTableScale + taxTable[z];

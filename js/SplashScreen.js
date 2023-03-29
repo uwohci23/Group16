@@ -124,6 +124,11 @@ define(function(require, exports, module) {
     // When the form is submitted, we'll be ready to launch the game
     $('#playForm').submit(play.bind(this));
 
+    // if tutorial, set the tutorial flag
+    $('#tutorialForm').submit((e) => {
+      play.call(this, e, true);
+    });
+
     // Display the name and difficulty form
     $('#start').toggle();
     $('#nameForm').focus();
@@ -134,15 +139,16 @@ define(function(require, exports, module) {
 
   // This function should be called after the name/difficulty form has been submitted. The game will now be launched
   // with the map selected earlier.
-  var play = function(e) {
+  var play = function(e, tutorial=false) {
     e.preventDefault();
 
     // As usual, uninstall event listeners, and hide the UI
     $('#playForm').off('submit');
+    $('#tutorialForm').off('submit');
     $('#start').toggle();
 
     // What values did the player specify?
-    var difficulty = $('.difficulty:checked').val() - 0;
+    var difficulty = tutorial ? 3 : $('.difficulty:checked').val() - 0;
     var name = $('#nameForm').val();
 
     // Launch a new game

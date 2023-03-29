@@ -86,9 +86,9 @@ define(function(require, exports, module) {
     this._emitEvent(Messages.AUTOBUDGET_CHANGED, this.autoBudget);
   };
 
-
-  var RLevels = [0.7, 0.9, 1.2];
-  var FLevels = [1.4, 1.2, 0.8];
+  // corresponds to game levels, 0 = easy, 1 = med, 2 = hard, 3 = tutorial (for now tutorial has same values as easy)
+  var RLevels = [0.7, 0.9, 1.2, 0.7];
+  var FLevels = [1.4, 1.2, 0.8, 1.4];
 
   // Calculates the best possible outcome in terms of funding the various services
   // given the player's current funds and tax yield. On entry, roadPercent etc. are

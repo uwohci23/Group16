@@ -123,7 +123,8 @@ define(function(require, exports, module) {
 
 
   Simulation.prototype.setLevel = function(l) {
-    if (l !== Simulation.LEVEL_EASY &&
+    if (l !== Simulation.LEVEL_TUTORIAL &&
+        l !== Simulation.LEVEL_EASY &&
         l !== Simulation.LEVEL_MED &&
         l !== Simulation.LEVEL_HARD)
       throw new Error('Invalid level!');
@@ -637,6 +638,7 @@ define(function(require, exports, module) {
     {LEVEL_EASY: MiscUtils.makeConstantDescriptor(0),
     LEVEL_MED:  MiscUtils.makeConstantDescriptor(1),
     LEVEL_HARD: MiscUtils.makeConstantDescriptor(2),
+    LEVEL_TUTORIAL: MiscUtils.makeConstantDescriptor(3),
     SPEED_PAUSED: MiscUtils.makeConstantDescriptor(0),
     SPEED_SLOW:  MiscUtils.makeConstantDescriptor(1),
     SPEED_MED: MiscUtils.makeConstantDescriptor(2),

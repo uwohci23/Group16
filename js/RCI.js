@@ -39,7 +39,7 @@ define(function(require, exports, module) {
     this._padding = 3; // 3 rectangles in each bit of padding
     this._buckets = 10; // 0.2000 is scaled in to 10 buckets
     this._rectSize = 5; // Each rect is 5px
-    this._scale = Math.floor(2000 / this._buckets);
+    this._scale = 100;
 
     this._canvas = $('<canvas></canvas>', {id: id})[0];
 
@@ -70,7 +70,7 @@ define(function(require, exports, module) {
     // The rect is inset by one unit of padding
     var boxLeft = this._padding * this._rectSize;
     // and is the length of a bar plus a unit of padding down
-    var boxTop = (this._buckets + this._padding) * this._rectSize;
+    var boxTop = (this._buckets + this._padding) * this._rectSize + 50;
     // It must accomodate 3 bars, 2 bits of internal padding
     // with padding either side
     var boxWidth = 7 * this._padding * this._rectSize;
@@ -83,18 +83,37 @@ define(function(require, exports, module) {
 
   RCI.prototype._drawValue = function(ctx, index, value) {
     // Need to scale com and ind
-    if (index > 1)
-      value = Math.floor(2000/1500 * value);
+    var percentageValue = (value + 2000) / 4000;
+    if (index >= 1)
+    {
+      percentageValue = (value + 1500) / 3000;
+    }
 
     var colours = ['rgb(0,255,0)', 'rgb(0, 0, 139)', 'rgb(255, 255, 0)'];
-    var barHeightRect = Math.floor(Math.abs(value) / this._scale);
-    var barStartY = (value >= 0) ?
-      this._buckets + this._padding - barHeightRect : this._buckets + 2 * this._padding;
+    var barHeightRect = Math.floor(percentageValue * this._scale) * 0.8;
+    var barStartY = (this._buckets + this._padding) * this._rectSize + 50 - barHeightRect;
     var barStartX = 2 * this._padding + (index * 2 * this._padding);
 
     ctx.fillStyle = colours[index];
-    ctx.fillRect(barStartX * this._rectSize, barStartY * this._rectSize,
-                 this._padding * this._rectSize, barHeightRect * this._rectSize);
+    ctx.fillRect(barStartX * this._rectSize, (barStartY), this._padding * this._rectSize * 1.5, barHeightRect);
+
+    // add percentage label
+    var textLeft = 2 * this._padding + (index * 2 * this._padding) + Math.floor(this._padding/2);
+    ctx.font = 'bold xx-small sans-serif';
+    if (index == 1 && percentageValue >= 0.2) 
+    ctx.fillStyle = 'rgb(255, 255, 255)';
+    else
+      ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.textBaseline = 'bottom';
+    var percentageValueStr = (percentageValue * 100).toFixed(0).toString();
+
+    // special handling for 0%s, they have different spacing 
+    if (percentageValue == 0)
+      ctx.fillText(percentageValueStr, (textLeft * this._rectSize) + 2.5, (this._buckets + 2 * this._padding) * this._rectSize + 30);
+    else if (percentageValue > 0 && percentageValue < 1)
+      ctx.fillText(percentageValueStr, (textLeft * this._rectSize), (this._buckets + 2 * this._padding) * this._rectSize + 30);
+    else
+      ctx.fillText(percentageValueStr, (textLeft * this._rectSize) - 2, (this._buckets + 2 * this._padding) * this._rectSize + 30);
   };
 
 
@@ -103,11 +122,20 @@ define(function(require, exports, module) {
     var textLeft = 2 * this._padding + (index * 2 * this._padding) +
                    Math.floor(this._padding/2);
 
-    ctx.font = 'normal xx-small sans-serif';
+    ctx.font = 'bold xx-small sans-serif';
     ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.textBaseline = 'bottom';
-    ctx.fillText(labels[index], textLeft * this._rectSize,
-                 (this._buckets + 2 * this._padding) * this._rectSize);
+    ctx.fillText(labels[index], (textLeft * this._rectSize) + 2.5,
+                 (this._buckets + 2 * this._padding) * this._rectSize + 50);
+  };
+
+  RCI.prototype._drawTitle = function(ctx) {
+    var textLeft = 2 *  + (2 * this._padding) + Math.floor(this._padding/2);
+    ctx.font = 'bold 20px sans-serif';
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('Demand (%)', this._padding * this._rectSize,
+                 (2 * this._padding) * this._rectSize - 10);
   };
 
 
@@ -131,6 +159,9 @@ define(function(require, exports, module) {
       this._drawValue(ctx, i, values[i]);
       this._drawLabel(ctx, i);
     }
+
+    // add demand label
+    this._drawTitle(ctx);
   };
 
 

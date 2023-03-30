@@ -473,7 +473,7 @@ define(function(require, exports, module) {
         break;
 
       default:
-        $('#toolOutput').html('Tools');
+        $('#toolOutput').html('Building');
     }
   };
 

@@ -357,9 +357,9 @@ nav li {
 }
 
 .toolButton {
-  width: 140px;
-  margin-left: 5px;
-  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
   color: black;
   background-color: white;
   font-size: 12px;
@@ -413,10 +413,9 @@ nav li {
 }
 
 #controls {
-  position: absolute;
-  top: 40px;
-  width: 305px;
-  height: 220px;
+  text-align: center;
+  float:left;
+  width: 900px;
 }
 
 #debug {
@@ -484,7 +483,7 @@ nav li {
 
 #notifications {
   position: absolute;
-  bottom: 65px;
+  bottom: 160px;
   left: 50%;
   border: 1px solid black;
   border-radius:20px;
@@ -504,7 +503,6 @@ nav li {
   background-color: gray;
   z-index: 10;
 }
-
 
 #RCIContainer {
   position: absolute;
@@ -548,6 +546,23 @@ nav li {
   width: 400px;
   margin: 0 auto;
   padding: 0 110px;
+}
+
+#toolbar{
+  position: absolute;
+  display:inline-block;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  bottom: 25px;
+  width: 55%;
+  height: 100px;
+}
+
+#tools{
+  text-align: center;
+  width: 150px;
+  float:right;
 }
 
 #tooSmall {
@@ -724,7 +739,7 @@ nav li {
 
 @media (max-height: 702px) {
   #controls {
-    top: 30px;
+    bottom: 30px;
   }
 
   #debug {
@@ -754,11 +769,15 @@ nav li {
   #tw {
     top: 280px;
   }
+
+  #tools {
+    right: 30px;
+  }
 }
 
 @media (max-height: 672px) {
   #controls {
-    top: 20px;
+    bottom: 20px;
   }
 
   #debug {
@@ -788,6 +807,10 @@ nav li {
   #tw {
     top: 260px;
   }
+
+  #tools {
+    right: 20px;
+  }
 }
 
 @media (max-height: 642px) {
@@ -799,7 +822,7 @@ nav li {
   }
 
   #controls {
-    top: 10px;
+    bottom: 10px;
   }
 
   #debug {
@@ -829,11 +852,15 @@ nav li {
   #tw {
     top: 240px;
   }
+
+  #tools {
+    right: 20px;
+  }
 }
 
 @media (max-height: 612px) {
   #controls {
-    top: 0px;
+    bottom: 0px;
   }
 
   #debug {
@@ -862,6 +889,10 @@ nav li {
 
   #tw {
     display: none;
+  }
+
+  #tools {
+    right: 0px;
   }
 }
 

@@ -27,7 +27,7 @@ body {
 
 button, input[type="submit"] {
   width: 140px;
-  height: 19px;
+  height: 20px;
   border-radius: 3px;
   cursor: pointer;
   border: none;
@@ -77,15 +77,13 @@ nav a, nav a:link, nav a:visited, nav a:hover, footer a, footer a:link, footer a
   color: white;
 }
 
+p{
+  pointer-events: none
+}
+
 footer a, footer a:link, footer a:visited, footer a:hover {
   text-decoration: underline;
   margin-left: 5px;
-}
-
-img{
-  max-width: 400px;
-  max-height: 300px;
-  border-radius:20px;
 }
 
 nav li {
@@ -366,10 +364,25 @@ nav li {
   display: inline-block;
 }
 
+.toolIcon{
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  margin:auto;
+  pointer-events: none
+}
+
 .tutorialPane{
   width:100%;
   min-width: 100%;
   max-width: 100%;
+}
+
+.tutorialImage{
+  max-width: 400px;
+  max-height: 300px;
+  border-radius:20px;
 }
 
 .unselected {
@@ -416,6 +429,7 @@ nav li {
   text-align: center;
   float:left;
   width: 900px;
+  height:115px;
 }
 
 #debug {
@@ -563,6 +577,7 @@ nav li {
   text-align: center;
   width: 150px;
   float:right;
+  height:115px;
 }
 
 #tooSmall {
@@ -644,7 +659,6 @@ nav li {
 
 #commercialButton {
   background-color: blue;
-  color: white;
 }
 
 #fireButton {
@@ -661,17 +675,14 @@ nav li {
 
 #parkButton {
   background-color: darkgreen;
-  color: white;
 }
 
 #policeButton {
-  background-color: darkblue;
-  color: white;
+  background-color: rgb(68,144,178);
 }
 
 #portButton {
  background-color: dodgerblue;
- color: white;
 }
 
 #queryButton, #queryHeader {
@@ -680,7 +691,6 @@ nav li {
 
 #railButton {
   background-color: brown;
-  color: white;
 }
 
 #residentialButton {
@@ -689,12 +699,10 @@ nav li {
 
 #roadButton {
   background-color: black;
-  color: white;
 }
 
 #stadiumButton {
   background-color: indigo;
-  color: white;
 }
 
 #wireButton {

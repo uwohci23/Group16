@@ -58,6 +58,7 @@ define(function(require, exports, module) {
     $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
     $('#loadButton').click(handleLoad.bind(this));
     $('#returnBack').click(returnToSplash.bind(this));
+    $('#playForm').submit(initGame.bind(this));
 
     // Conditionally enable load/save buttons
     $('#saveRequest').prop('disabled', !Storage.canStore);
@@ -132,7 +133,6 @@ define(function(require, exports, module) {
     if (Config.debug)
       $('#nameForm').removeAttr('required');
 
-    $('#playForm').submit(initGame.bind(this));
     
     // When the form is submitted, we'll be ready to launch the game
     // $('#playForm').submit(function(e){

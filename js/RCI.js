@@ -68,16 +68,19 @@ define(function(require, exports, module) {
 
   RCI.prototype._drawRect = function(ctx) {
     // The rect is inset by one unit of padding
-    var boxLeft = this._padding * this._rectSize;
     // and is the length of a bar plus a unit of padding down
-    var boxTop = (this._buckets + this._padding) * this._rectSize + 50;
     // It must accomodate 3 bars, 2 bits of internal padding
     // with padding either side
-    var boxWidth = 7 * this._padding * this._rectSize;
-    var boxHeight = this._padding * this._rectSize;
+    var boxWidth = this._canvas.width - 20;
+    var boxHeight = 25;
+
+    var boxLeft = 0;
+    var boxTop = (this._buckets + this._padding) * this._rectSize + 50;
 
     ctx.fillStyle = 'rgb(192, 192, 192)';
-    ctx.fillRect(boxLeft, boxTop, boxWidth, boxHeight);
+    ctx.beginPath();
+    ctx.roundRect(boxLeft, boxTop, boxWidth, boxHeight, [5]);
+    ctx.fill();
   };
 
 
@@ -90,15 +93,17 @@ define(function(require, exports, module) {
     }
 
     var colours = ['rgb(0,255,0)', 'rgb(0, 0, 139)', 'rgb(255, 255, 0)'];
+    var padValue = 15;
     var barHeightRect = Math.floor(percentageValue * this._scale) * 0.8;
+    var barWidthRect = 25;
     var barStartY = (this._buckets + this._padding) * this._rectSize + 50 - barHeightRect;
-    var barStartX = 2 * this._padding + (index * 2 * this._padding);
+    var barStartX = 17 + (index * (padValue + barWidthRect))
 
     ctx.fillStyle = colours[index];
-    ctx.fillRect(barStartX * this._rectSize, (barStartY), this._padding * this._rectSize * 1.5, barHeightRect);
+    ctx.fillRect(barStartX, (barStartY), barWidthRect, barHeightRect);
 
     // add percentage label
-    var textLeft = 2 * this._padding + (index * 2 * this._padding) + Math.floor(this._padding/2);
+    var textLeft = 17 + (index * (padValue + barWidthRect))
     ctx.font = 'bold xx-small sans-serif';
     if (index == 1 && percentageValue >= 0.2) 
     ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -109,24 +114,23 @@ define(function(require, exports, module) {
 
     // special handling for 0%s, they have different spacing 
     if (percentageValue == 0)
-      ctx.fillText(percentageValueStr, (textLeft * this._rectSize) + 2.5, (this._buckets + 2 * this._padding) * this._rectSize + 30);
+      ctx.fillText(percentageValueStr, textLeft + 10, (this._buckets + 2 * this._padding) * this._rectSize + 30);
     else if (percentageValue > 0 && percentageValue < 1)
-      ctx.fillText(percentageValueStr, (textLeft * this._rectSize), (this._buckets + 2 * this._padding) * this._rectSize + 30);
+      ctx.fillText(percentageValueStr, textLeft + 8, (this._buckets + 2 * this._padding) * this._rectSize + 30);
     else
-      ctx.fillText(percentageValueStr, (textLeft * this._rectSize) - 2, (this._buckets + 2 * this._padding) * this._rectSize + 30);
+      ctx.fillText(percentageValueStr, textLeft + 5.5, (this._buckets + 2 * this._padding) * this._rectSize + 30);
   };
 
-
   RCI.prototype._drawLabel = function(ctx, index) {
-    var labels = ['R', 'C', 'I'];
-    var textLeft = 2 * this._padding + (index * 2 * this._padding) +
-                   Math.floor(this._padding/2);
+    var labels = ["#residentialButton > img", "#commercialButton > img", "#industrialButton > img"];
+    var padValue = 15;
+    var barWidthRect = 25;
+    var textLeft = 17 + (index * (padValue + barWidthRect))
 
     ctx.font = 'bold xx-small sans-serif';
     ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.textBaseline = 'bottom';
-    ctx.fillText(labels[index], (textLeft * this._rectSize) + 2.5,
-                 (this._buckets + 2 * this._padding) * this._rectSize + 50);
+    ctx.drawImage(document.querySelector(labels[index]), textLeft + 2, (this._buckets + this._padding) * this._rectSize + 53, 20, 20);
   };
 
   RCI.prototype._drawTitle = function(ctx) {

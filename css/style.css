@@ -401,6 +401,18 @@ nav li {
   z-index: 1;
 }
 
+.leftMargin {
+  margin-left: 5%;
+}
+
+#ingameEvalHeader {
+  background-color: rgb(171, 127, 82);
+  width: 100%;
+  height: 20px;
+  top: 0px;
+  display: inline-block;
+}
+
 #budgetForm > div:nth-child(9) {
   align: center;
   width: 100%;

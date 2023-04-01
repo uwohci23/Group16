@@ -125,7 +125,7 @@ define(function(require, exports, module) {
   messageText[Messages.NEED_STADIUM] = 'Residents demand a Stadium';
   messageText[Messages.ROAD_NEEDS_FUNDING] = 'Roads deteriorating, due to lack of funds';
   messageText[Messages.POLICE_NEEDS_FUNDING] = 'Police departments need funding';
-  messageText[Messages.WELCOME] = 'Welcome to micropolisJS';
+  messageText[Messages.WELCOME] = 'Start your game by clicking "Play" in the settings window';
   messageText[Messages.BLACKOUTS_REPORTED] = 'Brownouts, build another Power Plant';
   messageText[Messages.EARTHQUAKE] = 'Major earthquake reported !!';
   messageText[Messages.EXPLOSION_REPORTED] = 'Explosion detected ';

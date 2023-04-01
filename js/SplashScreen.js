@@ -57,6 +57,7 @@ define(function(require, exports, module) {
     $('#generateButton').click(regenerateMap.bind(this));
     $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
     $('#loadButton').click(handleLoad.bind(this));
+    $('#returnBack').click(returnToSplash.bind(this));
 
     // Conditionally enable load/save buttons
     $('#saveRequest').prop('disabled', !Storage.canStore);
@@ -104,6 +105,16 @@ define(function(require, exports, module) {
     var g = new Game(savedGame, this.tileSet, this.snowTileSet, this.spriteSheet, Simulation.LEVEL_EASY, name);
   };
 
+  var returnToSplash = function(e){
+    e.preventDefault();
+    $('#splash').toggle();
+    $('#start').toggle();
+
+    $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
+    $('#loadButton').click(handleLoad.bind(this));
+
+  }
+
 
   // After a map has been selected, call this function to display a form asking the user for
   // a city name and difficulty level.
@@ -121,7 +132,7 @@ define(function(require, exports, module) {
     if (Config.debug)
       $('#nameForm').removeAttr('required');
 
-    $('#playForm').submit(tutorial.bind(this));
+    $('#playForm').submit(initGame.bind(this));
     
     // When the form is submitted, we'll be ready to launch the game
     // $('#playForm').submit(function(e){
@@ -139,7 +150,7 @@ define(function(require, exports, module) {
     this.splashCanvas2.paint(this.map);
   };
 
-  var tutorial = function(e){
+  var initGame = function(e){
     e.preventDefault();
 
     // Remove the initial event listeners
@@ -148,10 +159,18 @@ define(function(require, exports, module) {
     $('#playit').off('click');
 
     $('#start').toggle();
-    $('#tutorialScreen').toggle();
 
     // When the form is submitted, we'll be ready to launch the game
-    $('#tutorialForm').submit(play.bind(this));
+    if ($('#tutorialCheckbox').is(":checked"))
+    {
+      $('#tutorialScreen').toggle();
+      $('#tutorialForm').submit(play.bind(this));
+    }
+    else{
+      $('#playForm').submit(play.bind(this));
+      $('#playForm').submit();
+    }
+
   };
 
   // This function should be called after the name/difficulty form has been submitted. The game will now be launched
@@ -171,6 +190,7 @@ define(function(require, exports, module) {
 
     // Launch a new game
     var g = new Game(this.map, this.tileSet, this.snowTileSet, this.spriteSheet, difficulty, name);
+    g.handlePause();
   };
 
 

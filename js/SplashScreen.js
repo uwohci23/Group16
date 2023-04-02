@@ -104,6 +104,8 @@ define(function(require, exports, module) {
 
     // Launch
     var g = new Game(savedGame, this.tileSet, this.snowTileSet, this.spriteSheet, Simulation.LEVEL_EASY, name);
+    if (!g.isPaused)
+      g.handlePause();
   };
 
   var returnToSplash = function(e){

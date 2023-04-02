@@ -21,6 +21,10 @@
   src: local('ChunkFive'), url(chunk.woff) format('woff');
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
   background-image: url('../images/dirtbg.png');
 }
@@ -334,6 +338,11 @@ nav li {
   color: white
 }
 
+.splashReturn {
+  background-color: rgb(50,50,50);
+  color: white
+}
+
 .statisticsItem {
   display: inline-block;
   width: 200px;
@@ -377,6 +386,9 @@ nav li {
   width:100%;
   min-width: 100%;
   max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 
 .tutorialImage{
@@ -402,7 +414,7 @@ nav li {
 }
 
 #budgetForm > div:nth-child(9) {
-  align: center;
+  align-items: center;
   width: 100%;
 }
 

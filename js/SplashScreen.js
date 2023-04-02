@@ -170,7 +170,6 @@ define(function(require, exports, module) {
       $('#playForm').submit(play.bind(this));
       $('#playForm').submit();
     }
-
   };
 
   // This function should be called after the name/difficulty form has been submitted. The game will now be launched

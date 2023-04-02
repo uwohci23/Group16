@@ -572,26 +572,28 @@ nav li {
 
 #toolbar{
   position: absolute;
+  min-width: 80%;
+  width:80%;
+  max-width: 80%;
   text-align: center;
-  bottom: 25px;
-  width:100%;
-  height: auto;
-  transform: translate(25%, -50px);
+  bottom: 0px;
+  transform: translate(25%, -25px);
 }
 
 #controls {
-  text-align: center;
+
   width: fit-content;
   bottom: 10px;
-  max-width: 70%;
+  margin-left:auto;
   margin-right:10px;
   float:left;
   height: auto;
 }
 
 #tools{
-  text-align: center;
+  
   width: fit-content;
+  min-width: fit-content;
   max-width: 30%;
   height: auto;
   float:left;
@@ -726,13 +728,19 @@ nav li {
   background-color: khaki;
 }
 
-@media(max-width: 1465px){
+@media(max-width: 1378px){
   #controls {
-    max-width:40%;
+    max-width:60%;
   }
 
   #tools{
     max-width:10%;
+  }
+
+  #toolbar{
+    min-width: 90%;
+    width:90%;
+    max-width: 90%;
   }
 }
 

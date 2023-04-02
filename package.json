@@ -1,27 +1,27 @@
 {
-  "name": "micropolisJS",
-  "version": "0.0.1",
-  "description": "A port of the open-source simulator \"Micropolis\" to Javascript/HTML5",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/graememcc/micropolisJS.git"
+  "name": "4474-report",
+  "version": "1.0.0",
+  "license": "MIT",
+  "idyll": {
+    "theme": "idyll",
+    "layout": "centered",
+    "css": "styles.css",
+    "authorView": false
   },
-  "bugs": {
-    "url": "https://github.com/graememcc/micropolisJS/issues"
+  "type": "module",
+  "scripts": {
+    "start": "idyll",
+    "build": "idyll build",
+    "publish": "idyll publish"
+  },
+  "dependencies": {
+    "idyll": "6.0.0-alpha.4",
+    "idyll-d3-component": "^2.0.0",
+    "d3": "7",
+    "d3-selection": "^2.0.0",
+    "d3-transition": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.3",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "babel-loader": "^9.1.2",
-    "webpack": "^5.76.2",
-    "webpack-cli": "^5.0.1"
-  },
-  "author": "Graeme McCutcheon (http://www.graememcc.co.uk)",
-  "license": "GPL-3.0",
-  "readmeFilename": "README.md",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "gh-pages": "^0.12.0"
   }
 }

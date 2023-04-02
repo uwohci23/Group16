@@ -35,11 +35,11 @@ define(function(require, exports, module) {
   var Transport = require('./Transport');
   var Valves = require('./Valves');
 
-  var Simulation = EventEmitter(function (gameMap, gameLevel, speed, savedGame) {
+  var Simulation = EventEmitter(function (gameMap, gameLevel, speed, savedGame, input) {
     this._map = gameMap;
     this.setLevel(gameLevel);
     this.setSpeed(speed);
-
+    this.inputStatus = input;
     this._phaseCycle = 0;
     this._simCycle = 0;
     this._cityTime = 0;
@@ -121,6 +121,26 @@ define(function(require, exports, module) {
     this.init();
   });
 
+  Simulation.prototype.checkGreyOut = function(e){
+    var elements = $('.toolButton');
+    var gameTools = this.inputStatus.gameTools;
+    for (var i=0; i< elements.length; i++)    {
+      try{
+        var toolType = $(elements[i]).attr('data-tool');
+        var curTool = gameTools[toolType];
+
+        if(typeof curTool !== 'undefined'){
+          if(curTool.toolCost < e){
+            $(elements[i]).removeClass('unaffordable');
+          }else{
+            $(elements[i]).addClass('unaffordable');
+          } 
+        }
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+  }
 
   Simulation.prototype.setLevel = function(l) {
     if (l !== Simulation.LEVEL_TUTORIAL &&
@@ -266,6 +286,10 @@ define(function(require, exports, module) {
     }.bind(this));
 
     this.budget.addEventListener(Messages.FUNDS_CHANGED, MiscUtils.reflectEvent.bind(this, Messages.FUNDS_CHANGED));
+
+    // Colour out specific options when cash is below a certain amount.
+    this.budget.addEventListener(Messages.FUNDS_CHANGED, this.checkGreyOut.bind(this));
+
     this.budget.addEventListener(Messages.BUDGET_NEEDED, MiscUtils.reflectEvent.bind(this, Messages.BUDGET_NEEDED));
     this.budget.addEventListener(Messages.NO_MONEY, this._wrapMessage.bind(this, Messages.NO_MONEY));
 
@@ -309,7 +333,6 @@ define(function(require, exports, module) {
   var CENSUS_FREQUENCY_10 = 4;
   var CENSUS_FREQUENCY_120 = CENSUS_FREQUENCY_10 * 10;
   var TAX_FREQUENCY = 48;
-
 
   var simulate = function(simData) {
     this._phaseCycle &= 15;
@@ -393,7 +416,6 @@ define(function(require, exports, module) {
     // Go on the the next phase.
     this._phaseCycle = (this._phaseCycle + 1) & 15;
   };
-
 
   Simulation.prototype._simulate = function(simData) {
     // This is actually a wrapper function that will only be called once, to perform the initial

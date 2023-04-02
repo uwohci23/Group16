@@ -39,6 +39,9 @@ define(function(require, exports, module) {
     this._applicationCost += cost;
   };
 
+  var getCost = function(){
+    return this._applicationCost;
+  }
 
   var doAutoBulldoze = function(x, y) {
     var tile = this._worldEffects.getTile(x, y);

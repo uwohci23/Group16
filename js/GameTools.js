@@ -43,6 +43,7 @@ define(function(require, exports, module) {
       wire: new WireTool(map),
     });
 
+
     tools.query.addEventListener(Messages.QUERY_WINDOW_NEEDED, MiscUtils.reflectEvent.bind(tools, Messages.QUERY_WINDOW_NEEDED));
 
     return tools;

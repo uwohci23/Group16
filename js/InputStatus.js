@@ -70,6 +70,8 @@ define(function(require, exports, module) {
     $('#settingsRequest').click(settingsHandler.bind(this));
     $('#saveRequest').click(saveHandler.bind(this));
     $('#debugRequest').click(debugHandler.bind(this));
+
+
   });
 
 
@@ -276,7 +278,6 @@ define(function(require, exports, module) {
 
     e.preventDefault();
   };
-
 
   InputStatus.prototype.speedChangeHandler = function(e) {
     var requestedSpeed = $('#pauseRequest').text();

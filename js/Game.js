@@ -57,7 +57,13 @@ define(function(require, exports, module) {
     this.snowTileSet = snowTileSet;
     this.spriteSheet = spriteSheet;
     this.defaultSpeed = Simulation.SPEED_MED;
-    this.simulation = new Simulation(this.gameMap, difficulty, this.defaultSpeed, savedGame);
+
+    // Note: must init canvas before inputStatus
+    this.gameCanvas = new GameCanvas('canvasContainer');
+    this.gameCanvas.init(this.gameMap, this.tileSet, spriteSheet);
+    this.inputStatus = new InputStatus(this.gameMap, tileSet.tileWidth);
+
+    this.simulation = new Simulation(this.gameMap, difficulty, this.defaultSpeed, savedGame, this.inputStatus);
     this.changes = {
       toolUsed: [],
       change: [],
@@ -73,10 +79,7 @@ define(function(require, exports, module) {
 
     this.rci = new RCI('RCIContainer', this.simulation);
 
-    // Note: must init canvas before inputStatus
-    this.gameCanvas = new GameCanvas('canvasContainer');
-    this.gameCanvas.init(this.gameMap, this.tileSet, spriteSheet);
-    this.inputStatus = new InputStatus(this.gameMap, tileSet.tileWidth);
+
 
     this.dialogOpen = false;
     this._openWindow = null;
@@ -253,7 +256,6 @@ define(function(require, exports, module) {
     this.animate = (debug ? debugAnimate : this.commonAnimate).bind(this);
     this.animate();
   }
-
 
   Game.prototype.save = function() {
     var saveData = {name: this.name, everClicked: this.everClicked};

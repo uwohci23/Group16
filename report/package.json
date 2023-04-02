@@ -9,10 +9,12 @@
     "authorView": false
   },
   "type": "module",
+  "homepage": "https://uwohci23.github.io/Group16/",
   "scripts": {
     "start": "idyll",
     "build": "idyll build",
-    "publish": "idyll publish"
+    "publish": "idyll publish",
+    "deploy": "idyll build && gh-pages -d build"
   },
   "dependencies": {
     "idyll": "6.0.0-alpha.4",

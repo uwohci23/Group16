@@ -572,31 +572,32 @@ nav li {
 
 #toolbar{
   position: absolute;
-  min-width: 80%;
-  width:80%;
-  max-width: 80%;
-  text-align: center;
   bottom: 0px;
-  transform: translate(25%, -25px);
+  width:100%;
+  text-align: center;
+  transform: translate(0, -25px);
+}
+
+#toolsHolder{
+  background-color: #663399;
+  width: 80%;
+  margin:auto;
 }
 
 #controls {
-
-  width: fit-content;
   bottom: 10px;
-  margin-left:auto;
+  margin-left:12.5%;
   margin-right:10px;
   float:left;
+  width: 65%;
   height: auto;
 }
 
 #tools{
-  
-  width: fit-content;
-  min-width: fit-content;
-  max-width: 30%;
-  height: auto;
   float:left;
+  min-width: fit-content;
+  width: fit-content;
+  height: auto;
 }
 
 #tooSmall {
@@ -735,12 +736,6 @@ nav li {
 
   #tools{
     max-width:10%;
-  }
-
-  #toolbar{
-    min-width: 90%;
-    width:90%;
-    max-width: 90%;
   }
 }
 
@@ -968,7 +963,7 @@ nav li {
   }
 }
 
-@media (max-width: 590px) {
+@media (max-width: 615px) {
   #tooSmall[data-hasscript=true] {
     display: block;
   }

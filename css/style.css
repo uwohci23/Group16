@@ -414,7 +414,7 @@ nav li {
 }
 
 #budgetForm > div:nth-child(9) {
-  align: center;
+  align-items: center;
   width: 100%;
 }
 

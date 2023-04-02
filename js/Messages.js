@@ -88,6 +88,7 @@ define(function(require, exports, module) {
     SPRITE_MOVED: MiscUtils.makeConstantDescriptor('Sprite move'),
     TAX_TOO_HIGH: MiscUtils.makeConstantDescriptor('Tax too high'),
     TOOL_CLICKED: MiscUtils.makeConstantDescriptor('Tool clicked'),
+    UNDO_CLICKED: MiscUtils.makeConstantDescriptor('Undo clicked'),
     TORNADO_SIGHTED: MiscUtils.makeConstantDescriptor('Tornado sighted'),
     TOUCH_WINDOW_CLOSED: MiscUtils.makeConstantDescriptor('Touch Window closed'),
     TRAFFIC_JAMS: MiscUtils.makeConstantDescriptor('Traffic jams reported'),

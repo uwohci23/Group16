@@ -20,7 +20,20 @@ define(function(require, exports, module) {
     this.centreTile = centreTile;
     this.size = size;
     this.animated = animated;
+    this.beforeModified = null;
+    this.modifiedCoordinates = {};
   });
+
+  BuildingTool.prototype.initCopy = function (n) {
+    var arr = [];
+    for (var i = 0; i < n; i++) {
+      arr[i] = [];
+      for (var j = 0; j < n; j++) {
+        arr[i][j] = null;
+      }
+    }
+    return arr;
+  }
 
 
   BuildingTool.prototype.putBuilding = function(leftX, topY) {
@@ -49,6 +62,18 @@ define(function(require, exports, module) {
     }
   };
 
+  BuildingTool.prototype.undo = function () {
+    var { leftX, topY } = this.modifiedCoordinates;
+    var posX, posY;
+    for (var dy = 0; dy < this.size; dy++) {
+      posY = topY + dy;
+      for (var dx = 0; dx < this.size; dx++) {
+        posX = leftX + dx;
+        this._worldEffects.setTile(posX, posY, this.beforeModified[dy][dx]);
+      }
+    }
+  }
+
 
   BuildingTool.prototype.prepareBuildingSite = function(leftX, topY) {
     // Check that the entire site is on the map
@@ -57,6 +82,9 @@ define(function(require, exports, module) {
 
     if (topY < 0 || topY + this.size > this._map.height)
       return this.TOOLRESULT_FAILED;
+
+    this.beforeModified = this.initCopy(this.size);
+    this.modifiedCoordinates = {leftX: leftX, topY: topY};
 
     var posX, posY, tileValue;
 
@@ -68,6 +96,7 @@ define(function(require, exports, module) {
         posX = leftX + dx;
 
         tileValue = this._worldEffects.getTileValue(posX, posY);
+        this.beforeModified[dy][dx] = tileValue;
 
         if (tileValue === Tile.DIRT)
           continue;

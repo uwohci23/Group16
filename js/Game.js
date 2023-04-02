@@ -55,8 +55,15 @@ define(function(require, exports, module) {
 
     this.tileSet = tileSet;
     this.snowTileSet = snowTileSet;
+    this.spriteSheet = spriteSheet;
     this.defaultSpeed = Simulation.SPEED_MED;
     this.simulation = new Simulation(this.gameMap, difficulty, this.defaultSpeed, savedGame);
+    this.changes = {
+      toolUsed: [],
+      change: [],
+      beforeModified: [],
+      modifiedCoordinates: [],
+    };
 
     this.name = name || 'MyTown';
     this.everClicked = false;
@@ -193,6 +200,9 @@ define(function(require, exports, module) {
 
     // Listen for tool clicks
     this.inputStatus.addEventListener(Messages.TOOL_CLICKED, this.handleTool.bind(this));
+
+    // Listen for building undos 
+    this.inputStatus.addEventListener(Messages.UNDO_CLICKED, this.handleUndo.bind(this));
 
     // And pauses
     this.inputStatus.addEventListener(Messages.SPEED_CHANGE, this.handlePause.bind(this));
@@ -444,6 +454,24 @@ define(function(require, exports, module) {
   };
 
 
+  Game.prototype.handleUndo = function () {
+    if (this.changes.change.length == 0)
+      return;
+    var undoData = JSON.parse(this.changes.change.pop());
+    var toolUsed  = this.changes.toolUsed.pop();
+    toolUsed.beforeModified = this.changes.beforeModified.pop();
+    toolUsed.modifiedCoordinates = this.changes.modifiedCoordinates.pop();
+    BaseTool.load(undoData);
+    this.simulation.load(undoData);
+
+    if (typeof toolUsed.undo !== "undefined")
+      toolUsed.undo();
+
+    toolUsed._worldEffects.apply();
+    // this.gameCanvas.init(this.gameMap, this.tileSet, this.spriteSheet, null);
+    this.animate();
+  }
+
   Game.prototype.handleTool = function(data) {
     var x = data.x;
     var y = data.y;
@@ -459,8 +487,21 @@ define(function(require, exports, module) {
     var budget = this.simulation.budget;
     var evaluation = this.simulation.evaluation;
 
+    // properties needed for undos
+    var saveData = {name: this.name, everClicked: this.everClicked};
+    BaseTool.save(saveData);
+    saveData = this.simulation.save(saveData);
+    saveData = JSON.stringify(saveData);
+    this.changes.change.push(saveData);
+    this.changes.toolUsed.push(tool);
+    
     // do it!
     tool.doTool(tileCoords.x, tileCoords.y, this.simulation.blockMaps);
+    
+    // more properties needed for undos
+    this.changes.beforeModified.push(tool.beforeModified);
+    this.changes.modifiedCoordinates.push(tool.modifiedCoordinates);
+
 
     tool.modifyIfEnoughFunding(budget);
     switch (tool.result) {

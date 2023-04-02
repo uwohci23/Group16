@@ -160,6 +160,7 @@ define(function(require, exports, module) {
     this._valves.save(saveData);
     this.budget.save(saveData);
     this._census.save(saveData);
+    return saveData;
   };
 
 

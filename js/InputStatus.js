@@ -242,6 +242,15 @@ define(function(require, exports, module) {
 
 
   var toolButtonHandler = function(e) {
+    // undo button 
+    this.toolName = $(e.target).attr('data-tool');
+    if (this.toolName == 'undo')
+    {
+      this._emitEvent(Messages.UNDO_CLICKED)
+      e.preventDefault();
+      return;
+    }
+
     // Remove highlight from last tool button
     $('.selected').each(function() {
       $(this).removeClass('selected');
@@ -252,7 +261,6 @@ define(function(require, exports, module) {
     $(e.target).removeClass('unselected');
     $(e.target).addClass('selected');
 
-    this.toolName = $(e.target).attr('data-tool');
     this.toolWidth = $(e.target).attr('data-size');
     this.currentTool = this.gameTools[this.toolName];
     this.toolColour = $(e.target).attr('data-colour');

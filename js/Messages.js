@@ -15,6 +15,7 @@ define(function(require, exports, module) {
 
   var messageData = {
     AUTOBUDGET_CHANGED: MiscUtils.makeConstantDescriptor('Autobudget changed'),
+    APPROVAL_UPDATED: MiscUtils.makeConstantDescriptor('Approval changed'),
     BUDGET_NEEDED: MiscUtils.makeConstantDescriptor('User needs to budget'),
     BUDGET_REQUESTED: MiscUtils.makeConstantDescriptor('Budget window requested'),
     BUDGET_WINDOW_CLOSED: MiscUtils.makeConstantDescriptor('Budget window closed'),
@@ -59,7 +60,9 @@ define(function(require, exports, module) {
     NUCLEAR_MELTDOWN: MiscUtils.makeConstantDescriptor('Nuclear Meltdown'),
     PLANE_CRASHED: MiscUtils.makeConstantDescriptor('Plane crashed'),
     POLICE_NEEDS_FUNDING: MiscUtils.makeConstantDescriptor('Police need funding'),
+    PROBLEMS_UPDATED: MiscUtils.makeConstantDescriptor('Problems updated'),
     POPULATION_UPDATED: MiscUtils.makeConstantDescriptor('Population updated'),
+    DELTAPOPULATION_UPDATED: MiscUtils.makeConstantDescriptor('Delta Population updated'),
     QUERY_WINDOW_CLOSED: MiscUtils.makeConstantDescriptor('Query window closed'),
     QUERY_WINDOW_NEEDED: MiscUtils.makeConstantDescriptor('Query window needed'),
     REACHED_CAPITAL: MiscUtils.makeConstantDescriptor('Now a capital'),
@@ -72,6 +75,7 @@ define(function(require, exports, module) {
     SAVE_REQUESTED: MiscUtils.makeConstantDescriptor('Save requested'),
     SAVE_WINDOW_CLOSED: MiscUtils.makeConstantDescriptor('Save window closed'),
     SCORE_UPDATED: MiscUtils.makeConstantDescriptor('Score updated'),
+    DELTASCORE_UPDATED: MiscUtils.makeConstantDescriptor('Delta Score updated'),
     SCREENSHOT_LINK_CLOSED: MiscUtils.makeConstantDescriptor('Screenshot link closed'),
     SCREENSHOT_WINDOW_CLOSED: MiscUtils.makeConstantDescriptor('Screenshot window closed'),
     SCREENSHOT_WINDOW_REQUESTED: MiscUtils.makeConstantDescriptor('Screenshot window requested'),

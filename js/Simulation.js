@@ -249,7 +249,7 @@ define(function(require, exports, module) {
     this._lastTickTime = -1;
 
     // Add various listeners that we will in turn transmit upwards
-    var evaluationEvents = ['CLASSIFICATION_UPDATED', 'POPULATION_UPDATED', 'SCORE_UPDATED'].map(function(m) {
+    var evaluationEvents = ['CLASSIFICATION_UPDATED', 'POPULATION_UPDATED', 'EVAL_UPDATED', 'APPROVAL_UPDATED','PROBLEMS_UPDATED', 'DELTASCORE_UPDATED', 'DELTAPOPULATION_UPDATED', 'SCORE_UPDATED'].map(function(m) {
       return Messages[m];
     });
     for (var i = 0, l = evaluationEvents.length; i < l; i++)

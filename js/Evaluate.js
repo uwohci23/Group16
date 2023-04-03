@@ -54,7 +54,7 @@ define(function(require, exports, module) {
     for (var i = 0; i < 4; i++) {
       var problemNo =  this.problemVotes[i].index;
       if (problemNo !== null &&  Text.problems)
-        problemsText = problemsText + Text.problems[problemNo] + " ";
+        problemsText = problemsText + (i + 1).toString() + ". " + Text.problems[problemNo] + " ";
     }
 
     this._emitEvent(Messages.EVAL_UPDATED, this.cityAssessedValue);

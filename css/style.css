@@ -393,6 +393,8 @@ nav li {
 }
 
 .tutorialImage{
+  min-width: 400px;
+  min-height: 300px;
   max-width: 400px;
   max-height: 300px;
   border-radius:20px;

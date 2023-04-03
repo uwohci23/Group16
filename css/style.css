@@ -504,7 +504,7 @@ nav li {
 #miscButtons {
   position: absolute;
   top: 250px;
-  height: 140px;
+  height: 162px;
 }
 
 #monstertv {
@@ -669,7 +669,7 @@ nav li {
   color: yellow;
 }
 
-#evalRequest, #evalHeader {
+#quitButton, #evalHeader {
   background-color: forestgreen;
   color: white;
 }

@@ -59,6 +59,7 @@ define(function(require, exports, module) {
     $('#loadButton').click(handleLoad.bind(this));
     $('#returnBack').click(returnToSplash.bind(this));
     $('#playForm').submit(initGame.bind(this));
+    $('#quitButton').click(quitGame.bind(this));
 
     // Conditionally enable load/save buttons
     $('#saveRequest').prop('disabled', !Storage.canStore);
@@ -115,6 +116,21 @@ define(function(require, exports, module) {
 
     $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
     $('#loadButton').click(handleLoad.bind(this));
+
+  }
+
+  var returnToSplash = function(e){
+    e.preventDefault();
+    $('#splash').toggle();
+    $('#start').toggle();
+
+    $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
+    $('#loadButton').click(handleLoad.bind(this));
+
+  }
+
+  var quitGame = function(e){
+    window.location.reload();
 
   }
 

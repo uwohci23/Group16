@@ -21,6 +21,7 @@ define(function(require, exports, module) {
   var GameCanvas = require('./GameCanvas');
   var GameMap = require('./GameMap');
   var InfoBar = require('./InfoBar');
+  var EvaluationHeader = require('./EvaluationHeader');
   var InputStatus = require('./InputStatus');
   var Messages = require('./Messages');
   var MonsterTV = require('./MonsterTV');
@@ -224,6 +225,19 @@ define(function(require, exports, module) {
       name: this.name
     };
     this.infoBar(this.simulation, initialValues);
+    this.evaluationHeader = EvaluationHeader('evalYes', 'evalProb', 'evalPopulation', 'evalMigration', 'evalValue', 'evalClass', 'evalLevel', 'evalScore', 'evalScoreDelta');
+    var initialValues = {
+      evalYes: this.simulation.evaluation.cityYes,
+      evalPopulation: this.simulation.evaluation.cityPop,
+      evalMigration: this.simulation.evaluation.cityPopDelta,
+      evalValue: this.simulation.evaluation.cityAssessedValue,
+      evalLevel: Text.gameLevel[this.simulation.evaluation.gameLevel],
+      evalClass: Text.cityClass[this.simulation.evaluation.cityClass],
+      evalScore: this.simulation.evaluation.cityScore,
+      evalScoreDelta: this.simulation.evaluation.evalScoreDelta,
+      
+    };
+    this.evaluationHeader(this.simulation, initialValues);
 
     this._notificationBar = new Notification('#notifications', this.gameCanvas, Text.messageText[Messages.WELCOME]);
 

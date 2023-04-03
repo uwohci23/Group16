@@ -421,6 +421,21 @@ nav li {
   z-index: 1;
 }
 
+.leftMargin {
+  margin-left: 5%;
+}
+
+#ingameEvalHeader {
+  background-color: rgb(171, 127, 82);
+  width: 100%;
+  height: 20px;
+  top: 0px;
+}
+
+#headerElements{
+  display: inline;
+}
+
 #budgetForm > div:nth-child(9) {
   align-items: center;
   width: 100%;
@@ -596,7 +611,7 @@ nav li {
   margin-left:12.5%;
   margin-right:10px;
   float:left;
-  width: 65%;
+  width: 70%;
   height: auto;
 }
 
@@ -656,7 +671,7 @@ nav li {
   color: yellow;
 }
 
-#evalRequest, #evalHeader {
+#quitButton, #evalHeader {
   background-color: forestgreen;
   color: white;
 }

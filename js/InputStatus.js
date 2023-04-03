@@ -63,7 +63,6 @@ define(function(require, exports, module) {
 
     $('.toolButton').click(toolButtonHandler.bind(this));
     $('#budgetRequest').click(budgetHandler.bind(this));
-    $('#evalRequest').click(evalHandler.bind(this));
     $('#disasterRequest').click(disasterHandler.bind(this));
     $('#pauseRequest').click(this.speedChangeHandler.bind(this));
     $('#screenshotRequest').click(screenshotHandler.bind(this));

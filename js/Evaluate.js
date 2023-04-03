@@ -15,6 +15,7 @@ define(function(require, exports, module) {
   var Messages = require('./Messages');
   var MiscUtils = require('./MiscUtils');
   var Random = require('./Random');
+  
 
   var PROBLEMS = ['CVP_CRIME', 'CVP_POLLUTION', 'CVP_HOUSING', 'CVP_TAXES',
                   'CVP_TRAFFIC', 'CVP_UNEMPLOYMENT', 'CVP_FIRE'];
@@ -47,6 +48,18 @@ define(function(require, exports, module) {
       this.evalInit();
       this.cityYes = 50;
     }
+    // get problems and send top 4
+    var Text = require('./Text');
+    var problemsText = '';
+    for (var i = 0; i < 4; i++) {
+      var problemNo =  this.problemVotes[i].index;
+      if (problemNo !== null &&  Text.problems)
+        problemsText = problemsText + (i + 1).toString() + ". " + Text.problems[problemNo] + " ";
+    }
+
+    this._emitEvent(Messages.EVAL_UPDATED, this.cityAssessedValue);
+    this._emitEvent(Messages.APPROVAL_UPDATED, this.cityYes);
+    this._emitEvent(Messages.PROBLEMS_UPDATED, problemsText);
   };
 
 
@@ -105,7 +118,10 @@ define(function(require, exports, module) {
     this.cityPopDelta = this.cityPop - oldPopulation;
 
     if (this.cityPopDelta !== 0)
+    {
       this._emitEvent(Messages.POPULATION_UPDATED, this.cityPop);
+      this._emitEvent(Messages.DELTAPOPULATION_UPDATED, this.cityPopDelta);
+    }
 
     return this.cityPop;
   };
@@ -309,6 +325,7 @@ define(function(require, exports, module) {
 
     if (this.cityScoreDelta !== 0)
       this._emitEvent(Messages.SCORE_UPDATED, this.cityScore);
+      this._emitEvent(Messages.DELTASCORE_UPDATED, this.cityScoreDelta);
   };
 
 

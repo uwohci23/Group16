@@ -99,6 +99,23 @@
             </form>
         </div>
 
+        <!--
+        ----  Evaluation Header
+        --->
+        <div id="ingameEvalHeader" class="initialHidden">
+          <div class="leftMargin initialHidden">
+            <p id="headerElements">Approval: <span id="evalYes"></span>%&emsp;</p>
+            <p id="headerElements">Population: <span id="evalPopulation"></span>&emsp;</p>
+            <p id="headerElements">Net Migration: <span id="evalMigration"></span>&emsp;</p>
+            <p id="headerElements">Assessed Value: <span id="evalValue"></span>&emsp;</p>
+            <p id="headerElements">Category: <span id="evalClass"></span>&emsp;</p>
+            <p id="headerElements">Game Level: <span id="evalLevel"></span>&emsp;</p>
+            <p id="headerElements">Score: <span id="evalScore"></span>&emsp;</p>
+            <p id="headerElements">Annual Change: <span id="evalScoreDelta"></span>&emsp;</p>
+            <p id="headerElements">Biggest Problems: <span id="evalProb"></span>&emsp;</p>
+          </div>
+        </div>
+
         <!-- 
         ----  Info Bar (Containing city name, date, funds, etc...)
         --->
@@ -134,9 +151,6 @@
               <button id="budgetRequest" class="miscButton">Budget</button>
             </div>
             <div>
-              <button id="evalRequest" class="miscButton">Evaluation</button>
-            </div>
-            <div>
               <button id="disasterRequest" class="miscButton">Disasters</button>
             </div>
             <div>
@@ -147,6 +161,9 @@
             </div>
             <div>
               <button id="screenshotRequest" class="miscButton">Take Picture</button>
+            </div>
+            <div>
+              <button id="quitButton" class="miscButton">Save and Exit</button>
             </div>
             <div>
               <button id="pauseRequest" class="miscButton">Play</button>

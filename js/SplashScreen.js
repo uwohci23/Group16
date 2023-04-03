@@ -27,6 +27,7 @@ define(function(require, exports, module) {
    */
 
   var onresize = null;
+  var g;
 
 
   // If the window is initially too small, try and relaunch if it gets bigger
@@ -119,19 +120,9 @@ define(function(require, exports, module) {
 
   }
 
-  var returnToSplash = function(e){
-    e.preventDefault();
-    $('#splash').toggle();
-    $('#start').toggle();
-
-    $('#newGameButton').click(acquireNameAndDifficulty.bind(this));
-    $('#loadButton').click(handleLoad.bind(this));
-
-  }
-
   var quitGame = function(e){
+    g.save();
     window.location.reload();
-
   }
 
 
@@ -206,7 +197,7 @@ define(function(require, exports, module) {
     var name = $('#nameForm').val();
 
     // Launch a new game
-    var g = new Game(this.map, this.tileSet, this.snowTileSet, this.spriteSheet, difficulty, name);
+    g = new Game(this.map, this.tileSet, this.snowTileSet, this.spriteSheet, difficulty, name);
     g.handlePause();
   };
 
